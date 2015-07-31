@@ -1,9 +1,11 @@
 class LocationsController < ApplicationController
   def index
-    if params[:search].present?
-      @locations = Location.near(params[:search], 50, :order => :distance)
-    else
-      @locations = Location.all
+    if current_user
+      if params[:search].present?
+        @locations = Location.near(params[:search], 50, :order => :distance)
+      else
+        @locations = current_user.locations
+      end
     end
   end
 
@@ -19,6 +21,7 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
     if @location.save
       redirect_to @location, :notice => "Successfully created location."
+      current_user.locations << @location 
     else
       render :action => 'new'
     end
