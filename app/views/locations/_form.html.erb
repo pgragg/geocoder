@@ -1,19 +1,10 @@
-<%= form_for @location do |f| %>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
-  <p>
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
-  </p>
-  <p>
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
-  </p>
-  <p>
-    <%= f.label :distance %><br />
-    <%= f.text_field :distance %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+<div class = "col-md-8 text-center center">
+  <%= form_for @location do |f| %>
+    <p>
+      <%= f.label :address %><br />
+      <%= f.text_field :address , class: 'form-control'%>
+    </p>
+
+    <p><%= f.submit %></p>
+  <% end %>
+</div>

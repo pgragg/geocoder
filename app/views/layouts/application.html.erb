@@ -7,8 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+<ul class="nav nav-tabs text-center"> 
+  <% if !current_user %> 
+    <li class= "col-sm-4 col-md-4 text-center"> 
+      <%= link_to "Create Account", new_user_registration_path, class:"btn btn-success" %> 
+    </li> 
+    <li class= "col-sm-4 col-md-4 text-center"> 
+      <%= link_to "Log In", new_user_session_path, class:"btn" %> 
+    </li> 
+  <% end %> 
+  <li class= "col-md-4" ><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+</ul> 
 
 <%= yield %>
+
+
+<div class = "row text-center"> 
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+</div> 
 
 </body>
 </html>

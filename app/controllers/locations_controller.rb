@@ -40,7 +40,20 @@ class LocationsController < ApplicationController
   def destroy
     @location = Location.find(params[:id])
     @location.destroy
-    redirect_to locations_url, :notice => "Successfully destroyed location."
+    # redirect_to locations_url, :notice => "Successfully destroyed location."
+
+    respond_to do |format|
+      format.html
+      format.js   { render :layout => false }
+    end
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
   end
 
   private 
